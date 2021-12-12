@@ -1,0 +1,4 @@
+aasвфыdas 3 50 10 1
+aasdвфas 3 50 15 10
+aasdфывas 3 50 10 15
+aasфывdas 3 50 10 17
