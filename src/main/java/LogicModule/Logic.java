@@ -7,7 +7,7 @@ import java.util.*;
 
 
 public class Logic {
-    public static ArrayList<Apartment> filterAparts(ArrayList<Apartment> apartsList, AdvertFilter filter){
+    public static ArrayList<Apartment> filterAparts(ArrayList<Apartment> apartsList, AdvertFilter filter) {
         ArrayList<Apartment> goodAparts = new ArrayList<>();
         for (Apartment apart : apartsList) {
             if (filter.filter(apart)) {
@@ -20,7 +20,7 @@ public class Logic {
     public static ArrayList<Apartment> readApartsListFromFile(String fileName) throws Exception {
         ArrayList<Apartment> apartList = new ArrayList<>();
         Scanner scanner = new Scanner(new File(fileName), StandardCharsets.UTF_8);
-        String line = "";
+        String line;
         while (scanner.hasNext()) {
             line = scanner.nextLine();
             if (line == null) {
@@ -33,11 +33,11 @@ public class Logic {
         return apartList;
     }
 
-    public static ArrayList<Apartment> readApartsListFromJtable(JTable table){
+    public static ArrayList<Apartment> readApartsListFromJtable(JTable table) {
         ArrayList<Apartment> apartsList = new ArrayList<>();
         for (int i = 0; i < table.getRowCount(); i++) {
             StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < table.getColumnCount(); j++){
+            for (int j = 0; j < table.getColumnCount(); j++) {
                 sb.append(table.getModel().getValueAt(i, j));
                 sb.append(" ");
             }
@@ -47,8 +47,7 @@ public class Logic {
     }
 
     public static Apartment parseLineIntoApartment(String line) {
-        line.trim();
-        String[] data = line.split(" ");
+        String[] data = line.trim().split(" ");
         Apartment apart = new Apartment();
         apart.setDistrict(data[0]);
         apart.setRoomsNumber(Integer.parseInt(data[1]));
@@ -60,7 +59,7 @@ public class Logic {
     }
 
 
-    public static void saveOutputIntoFile(String fileName, ArrayList<Apartment> apartsList) throws FileNotFoundException {
+    public static void saveOutputIntoFile(String fileName, ArrayList<Apartment> apartsList) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
             for (Apartment apart : apartsList) {
@@ -87,13 +86,13 @@ public class Logic {
         }
     }
 
-    public static void saveOutputIntoFile(String fileName, String str) throws Exception {
+    public static void saveOutputIntoFile(String fileName, String str) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
             writer.write(str);
             writer.flush();
         } catch (Exception e) {
-        System.err.println(e);
+            System.err.println(e);
         }
     }
 
@@ -104,7 +103,7 @@ public class Logic {
     }
 
 
-    public static void checkIfArrayListIsEmpty(ArrayList<Apartment> aparts) throws NoSuchElementException{
+    public static void checkIfArrayListIsEmpty(ArrayList<Apartment> aparts) throws NoSuchElementException {
         if (aparts.size() == 0) {
             throw new NoSuchElementException("Пустой массив");
         }
