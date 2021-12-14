@@ -65,7 +65,7 @@ public class Frame extends JFrame{
         fileChooserSave.setApproveButtonText("Save");
 
         this.setVisible(true);
-        this.setSize(860, 350);
+        this.setSize(860, 500);
 
         loadInputFromFileButton.addActionListener(e -> {
             try {
