@@ -38,6 +38,7 @@ public class Frame extends JFrame{
         JTableUtils.initJTableForArray(tableOutput, 40, true, true, false, false);
         JTableUtils.resizeJTable(tableOutput, 1,5, 30, 70);
         setHeadersNames(tableOutput);
+        tableOutput.setEnabled(false);
 
         JTableUtils.initJTableForArray(tableFilter, 40, true, true, false, false);
         JTableUtils.resizeJTable(tableFilter, 1, 8, 30, 100);
@@ -89,6 +90,7 @@ public class Frame extends JFrame{
                 ArrayList<Apartment> goodAparts = new ArrayList<>(Logic.filterAparts(apartsList, adFilter));
                 Logic.checkIfArrayListIsEmpty(goodAparts);
                 writeApartsIntoJTable(tableOutput, goodAparts);
+                tableOutput.setEnabled(false);
             }
             catch (NoSuchElementException ex){
                 displayMessage("Нет подходящих квартир");

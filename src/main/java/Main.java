@@ -6,6 +6,7 @@ import LogicModule.Logic;
 
 import java.util.ArrayList;
 
+//флажок для каждого параметра фильтра - возможность задать через консоль
 public class Main {
     public static void main(String[] args) throws Exception{
 
@@ -22,12 +23,13 @@ public class Main {
         String inputFilePath = argsParser.getArgumentValue("-i", "--input-file");
         String outputFilePath = argsParser.getArgumentValue("-o", "--output-file");
 
+
         ArrayList<Apartment> apartList = new ArrayList<>(Logic.readApartsListFromFile(inputFilePath));
         Logic.checkIfArrayListIsNull(apartList);
         Logic.checkIfArrayListIsEmpty(apartList);
 
-        AdvertFilter filter = new AdvertFilter(1, 5,
-                2, 200, 3, 12, 10, 200);
+        AdvertFilter filter = new AdvertFilter();
+        filter.setFilterArgsFromCmd(argsParser.getArgsDict());
 
         ArrayList<Apartment> goodAparts = new ArrayList<>(Logic.filterAparts(apartList, filter));
         if (goodAparts.size() == 0) {
